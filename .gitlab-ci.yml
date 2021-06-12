@@ -1,0 +1,47 @@
+image: node:14-slim
+
+before_script:
+  - npm i -g firebase-tools
+  - npm install
+
+stages:
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+test:
+  stage: test
+  script:
+    - npm run lint
+  only:
+    - develop
+    - /^feature/
+
+deploy-app:
+  stage: deploy
+  script:
+    - npm run build
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN
+  only:
+    refs:
+      - master
+      - develop
+    changes:
+      - src/**/*
+
+deploy-functions:
+  stage: deploy
+  script:
+    - cd functions
+    - npm install
+    - cd ..
+    - firebase deploy --only functions --token $FIREBASE_TOKEN
+  only:
+    refs:
+      - master
+      - develop
+    changes:
+      - functions/**/*

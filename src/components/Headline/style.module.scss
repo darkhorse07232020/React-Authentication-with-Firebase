@@ -1,0 +1,31 @@
+.headline1 {
+  @apply font-medium text-3xl;
+
+  @screen lg {
+    @apply text-5xl;
+  }
+}
+
+.headline2 {
+  @apply font-medium text-3xl;
+
+  @screen lg {
+    @apply text-5xl;
+  }
+}
+
+.headline3 {
+  @apply font-bold text-3xl;
+}
+
+.headline4 {
+  @apply font-bold;
+}
+
+.headline5 {
+  @apply font-medium;
+}
+
+.headline6 {
+  @apply font-normal;
+}

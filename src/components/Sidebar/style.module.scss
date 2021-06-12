@@ -1,0 +1,15 @@
+.sidebar {
+    @apply h-screen w-64 bg-darkBlue px-4 py-6 relative;
+
+    .nav {
+        @apply mt-7 text-whiteGray;
+
+        .link {
+            @apply block px-2 py-1 text-lg;
+
+            &.selected {
+                @apply text-white bg-black rounded-md;
+            }
+        }
+    }
+}
